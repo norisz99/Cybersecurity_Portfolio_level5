@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biztonsági Ellenőrzés - Twitch Gatekeeper</title>
+    <style>
+        body {
+            background-color: #0e0e10; /* Twitch sötét háttér */
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background-color: #18181b;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            text-align: center;
+            width: 350px;
+            border-top: 5px solid #9146ff; /* Twitch lila */
+        }
+        h2 { margin-bottom: 20px; font-weight: 600; }
+        p { color: #adadb8; font-size: 14px; margin-bottom: 30px; }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #2e2e32;
+            border: 2px solid #2e2e32;
+            border-radius: 5px;
+            color: white;
+            box-sizing: border-box; /* Hogy ne csússzon szét */
+        }
+        input:focus { border-color: #9146ff; outline: none; }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #9146ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+        button:hover { background-color: #772ce8; }
+        .logo { font-size: 40px; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="logo">👾</div>
+        <h2>Gatekeeper Login</h2>
+        <p>A hálózat eléréséhez kérjük, jelentkezz be a fiókoddal.</p>
+        
+        <form action="/" method="POST">
+            <input type="text" name="username" placeholder="Felhasználónév" required>
+            <input type="password" name="password" placeholder="Jelszó" required>
+            <button type="submit">Belépés</button>
+        </form>
+        
+        <p style="margin-top: 20px; font-size: 12px; color: #555;">
+            &copy; 2026 Norisz Security Labs. Secure Connection.
+        </p>
+    </div>
+
+</body>
+</html>
