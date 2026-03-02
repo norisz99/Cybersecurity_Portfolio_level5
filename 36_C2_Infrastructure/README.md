@@ -1,27 +1,30 @@
-# 📡 Project 36: Basic C2 Infrastructure (The Listener)
+# ⚠️ LEGAL DISCLAIMER
 
-**Focus:** Network Programming, Socket API, Multi-threaded Server, Reverse Shell
+**HU:** Ez az eszköz kizárólag **saját rendszerek tesztelésére** vagy a tulajdonos írásos engedélyével rendelkező hálózatokon használható. A szoftver oktatási céllal készült. A szerző (Paczok Norisz) elhárít minden felelősséget a jogellenes használatért vagy károkért.
 
-## 📌 Áttekintés
-Ez a projekt a "Command & Control" (C2) infrastruktúra alapköve. Egy TCP szervert valósít meg, amely képes fogadni a bejövő kapcsolatokat (Reverse Shell), és távoli parancsokat küldeni a csatlakoztatott klienseknek.
-A kód `Multi-threading` (többszálú) technológiát használ, így a szerver nem fagy le, amíg egy klienssel kommunikál, és képes lenne több kapcsolatot is kezelni a háttérben.
-
-## 🛠 Fájlok
-* `c2_server.py`: A központi szerver, amely a `9999`-es porton figyel. Kezeli a parancssori bemenetet és a hálózati kommunikációt.
-
-## 🚀 Használat
-1.  Indítsd el a szervert a támadó gépen:
-    ```bash
-    python c2_server.py
-    ```
-2.  Várd meg, amíg egy kliens (pl. a Project 37-ből) csatlakozik.
-3.  Amint a kapcsolat létrejött, kapsz egy interaktív Shellt.
-4.  Parancsok: `dir`, `whoami`, `ipconfig`, stb.
-
-## 🧠 Mit tanultam?
-* Hogyan működik a **TCP Handshake** és a socket kommunikáció Pythonban.
-* Miért kritikus a hibakezelés (pl. UTF-8 kódolási hibák kivédése) a stabil C2 kapcsolatoknál.
-* Hogyan lehet Pythonban párhuzamos szálakat kezelni (`threading` modul).
+**EN:** This tool is for **educational purposes and authorized testing only**. The creator (Paczok Norisz) assumes no liability for misuse or any damage caused by this program.
 
 ---
-**⚠️ Disclaimer:** Ez az eszköz kizárólag oktatási célokat szolgál és saját, izolált tesztkörnyezetben (Localhost) használandó.
+
+# 📡 Project 36: Custom C2 Infrastructure
+
+![Python](https://img.shields.io/badge/Python-3.x-blue?style=flat-square)
+![Library](https://img.shields.io/badge/Lib-Socket-yellow?style=flat-square)
+![Category](https://img.shields.io/badge/Category-C2_Framework-red?style=flat-square)
+
+## 📌 Áttekintés (Overview)
+Ez a projekt egy saját fejlesztésű **Command & Control (C2)** szerver alapjait fekteti le. A modern kiberbűnözésben a C2 szerverek "karmesterként" irányítják a fertőzött gépek (botnet) hálózatát. Ez a kód demonstrálja, hogyan épül fel a kommunikációs csatorna a támadó és az áldozat között.
+
+## 🛠️ Funkciók
+* **Multi-Client Handling:** Képes több "fertőzött" kliens egyidejű kezelésére (Threading).
+* **Heartbeat Protocol:** Folyamatos kapcsolatellenőrzés (Keep-Alive jelek), hogy tudjuk, melyik bot aktív.
+* **Remote Shell:** Parancsok küldése és a kimenet fogadása valós időben.
+
+## ⚙️ Technikai Részletek
+* **Nyelv:** Python 3.x
+* **Protokoll:** TCP Socket Stream
+* **Architektúra:** Server-Client modell
+
+## 🚀 Használat
+```bash
+python c2_server.py
