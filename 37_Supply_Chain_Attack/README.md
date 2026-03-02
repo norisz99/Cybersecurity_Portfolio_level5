@@ -1,26 +1,30 @@
-# 📦 Project 37: Supply Chain Attack Simulation
+# ⚠️ LEGAL DISCLAIMER
 
-**Focus:** Trojan Development, Code Injection, Process Hiding, OpSec
+**HU:** Ez az eszköz kizárólag **saját rendszerek tesztelésére** vagy a tulajdonos írásos engedélyével rendelkező hálózatokon használható. A szoftver oktatási céllal készült. A szerző (Paczok Norisz) elhárít minden felelősséget a jogellenes használatért vagy károkért.
 
-## 📌 Áttekintés
-Ez a projekt egy klasszikus "Supply Chain" (Ellátási lánc) támadást szimulál. A cél bemutatni, hogyan rejthető el rosszindulatú kód egy teljesen legálisnak tűnő, működő alkalmazásban.
-A "trójai faló" itt egy egyszerű Számológép, amely a háttérben – a felhasználó tudta nélkül – importálja és futtatja a hátsó kaput (Backdoor).
-
-## 🛠 Fájlok
-* `legit_calculator.py`: A felhasználói program (csali). Számológépként működik, de indításkor betölti a kártevőt.
-* `malicious_client.py`: A rejtett modul. Csatlakozik a C2 szerverhez (Project 36), és végrehajtja a parancsokat.
-
-## ⚙️ Technikai Részletek
-* **Thread Injection:** A kártevő külön szálon (`daemon thread`) fut, így nem akasztja meg a számológép működését.
-* **Anti-Forensics:** A kód tartalmazza a `sys.dont_write_bytecode = True` utasítást, amely megakadályozza a `__pycache__` mappák és `.pyc` fájlok létrejöttét, csökkentve a digitális lábnyomot.
-
-## 🚀 Használat
-1.  Győződj meg róla, hogy a C2 Szerver (Project 36) fut.
-2.  Futtasd a számológépet (az áldozat szerepében):
-    ```bash
-    python legit_calculator.py
-    ```
-3.  Használd a számológépet. Eközben a szerver oldalon megjelenik a kapcsolat.
+**EN:** This tool is for **educational purposes and authorized testing only**. The creator (Paczok Norisz) assumes no liability for misuse or any damage caused by this program.
 
 ---
-**⚠️ Disclaimer:** A kód bemutatja, miért veszélyes ismeretlen forrásból származó szoftvereket futtatni, még ha azok működőképesnek is tűnnek.
+
+# 📦 Project 37: Supply Chain Attack Simulation
+
+![Python](https://img.shields.io/badge/Python-3.x-blue?style=flat-square)
+![Technique](https://img.shields.io/badge/Technique-Code_Injection-orange?style=flat-square)
+![Category](https://img.shields.io/badge/Category-Advanced_Threat-red?style=flat-square)
+
+## 📌 Áttekintés (Overview)
+Ez a projekt a **Supply Chain (Ellátási lánc)** támadások működését szimulálja. A forgatókönyv szerint a támadó nem közvetlenül az áldozatot töri fel, hanem egy megbízható szoftvert (itt: `legit_calculator.py`) módosít, elrejtve benne egy hátsó kaput (`malicious_client`). Amikor a felhasználó elindítja a "számológépet", a háttérben a kártevő is lefut.
+
+## 🛠️ Funkciók
+* **🎭 Trojanized Software:** Egy működő számológép, ami alatt rejtett folyamat fut.
+* **🧵 Thread Injection:** A kártékony kód külön szálon indul, így a főprogram (számológép) nem fagy le, és a felhasználó nem gyanakszik.
+* **🔄 Silent Execution:** A háttérfolyamat láthatatlan marad a felhasználói felületen.
+
+## ⚙️ Technikai Részletek
+* **Nyelv:** Python 3.x
+* **Könyvtár:** `threading`, `subprocess`
+* **Módszer:** Backdooring legitimate scripts.
+
+## 🚀 Használat
+```bash
+python legit_calculator.py
